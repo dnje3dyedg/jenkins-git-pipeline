@@ -1,2 +1,1 @@
-#!/bin/bash
-echo "Hello from Git + Jenkins Pipeline!"
+echo "Hello from Jenkins Pipeline - Version 2"
