@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+
+        stage('Checkout') {
             steps {
-                echo 'Code cloned from GitHub'
+                echo 'Cloning repository from GitHub'
+                checkout scm
             }
         }
 
@@ -16,8 +18,19 @@ pipeline {
 
         stage('Run') {
             steps {
-                sh 'bash app.sh'
+                echo 'Executing application'
+                bat 'app.bat'
             }
         }
     }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
 }
+
